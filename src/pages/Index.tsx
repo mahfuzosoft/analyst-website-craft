@@ -1,7 +1,7 @@
-
 import { ArrowRight, CheckCircle, Users, FileText, MessageCircle, Mail, Phone, MapPin, Linkedin, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import React, { useState } from 'react';
 
 const Index = () => {
   const skills = [
@@ -40,6 +40,33 @@ const Index = () => {
     }
   ];
 
+  // Slider images and captions
+  const heroSlides = [
+    {
+      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+      title: "রিকোয়ারমেন্ট অ্যানালিস্ট",
+      subtitle: "ও ব্যবসায়িক কৌশলবিদ",
+      description: "জটিল ব্যবসায়িক প্রয়োজনীয়তাকে স্পষ্ট, কার্যকর রিকোয়ারমেন্টে রূপান্তর করি। আমি স্টেকহোল্ডার এবং ডেভেলপমেন্ট টিমের মধ্যে সেতুবন্ধন হিসেবে কাজ করে সফল প্রকল্প সরবরাহ করি।"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
+      title: "স্ট্র্যাটেজিক বিজনেস অ্যানালাইসিস",
+      subtitle: "আপনার ব্যবসার জন্য",
+      description: "আপনার ব্যবসার চাহিদা বুঝে কার্যকর সমাধান প্রদান করি, যা আপনাকে প্রতিযোগিতায় এগিয়ে রাখে।"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80",
+      title: "ডিজিটাল ট্রান্সফরমেশন",
+      subtitle: "স্মার্ট প্রসেস ডিজাইন",
+      description: "প্রযুক্তি ও ব্যবসায়িক লক্ষ্য একত্রিত করে, উন্নত প্রক্রিয়া ডিজাইন ও অপ্টিমাইজেশন নিশ্চিত করি।"
+    }
+  ];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50">
       {/* Navigation */}
@@ -57,26 +84,54 @@ const Index = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 px-6">
-        <div className="container mx-auto text-center">
-          <div className="max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 animate-fade-in">
-              রিকোয়ারমেন্ট অ্যানালিস্ট
-              <span className="block text-emerald-700">ও ব্যবসায়িক কৌশলবিদ</span>
+      {/* Hero Section - Image Slider */}
+      <section className="pt-24 pb-16 px-0 relative">
+        <div className="relative w-full rounded-none overflow-hidden shadow-lg">
+          <img
+            src={heroSlides[currentSlide].image}
+            alt={heroSlides[currentSlide].title}
+            className="w-full h-96 object-cover transition-all duration-700"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end p-8">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 drop-shadow">
+              {heroSlides[currentSlide].title}
+              <span className="block text-emerald-300">{heroSlides[currentSlide].subtitle}</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed animate-fade-in">
-              জটিল ব্যবসায়িক প্রয়োজনীয়তাকে স্পষ্ট, কার্যকর রিকোয়ারমেন্টে রূপান্তর করি। 
-              আমি স্টেকহোল্ডার এবং ডেভেলপমেন্ট টিমের মধ্যে সেতুবন্ধন হিসেবে কাজ করে সফল প্রকল্প সরবরাহ করি।
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
+            <p className="text-lg text-emerald-50 mb-6">{heroSlides[currentSlide].description}</p>
+            <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="bg-emerald-700 hover:bg-emerald-800 text-white px-8 py-3">
                 আমার কাজ দেখুন <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button variant="outline" size="lg" className="px-8 py-3 border-emerald-700 text-emerald-700 hover:bg-emerald-50">
+              <Button variant="outline" size="lg" className="px-8 py-3 border-emerald-100 text-emerald-100 hover:bg-emerald-900">
                 যোগাযোগ করুন
               </Button>
             </div>
+          </div>
+          {/* Slider Controls */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full p-2 transition"
+            aria-label="Previous Slide"
+          >
+            <svg width="24" height="24" fill="none" stroke="currentColor"><path d="M15 18l-6-6 6-6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </button>
+          <button
+            onClick={nextSlide}
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full p-2 transition"
+            aria-label="Next Slide"
+          >
+            <svg width="24" height="24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </button>
+          {/* Dots */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+            {heroSlides.map((_, idx) => (
+              <button
+                key={idx}
+                className={`w-3 h-3 rounded-full ${idx === currentSlide ? 'bg-emerald-400' : 'bg-white/50'} border border-white`}
+                onClick={() => setCurrentSlide(idx)}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
           </div>
         </div>
       </section>
