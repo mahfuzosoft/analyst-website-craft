@@ -1,7 +1,11 @@
 import { ArrowRight, CheckCircle, Users, FileText, MessageCircle, Mail, Phone, MapPin, Linkedin, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+<<<<<<< HEAD
 import React, { useState } from 'react';
+=======
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+>>>>>>> 176ec199e199e45cfeac013114b86cf8fda28517
 
 const Index = () => {
   const skills = [
@@ -40,6 +44,7 @@ const Index = () => {
     }
   ];
 
+<<<<<<< HEAD
   // Slider images and captions
   const heroSlides = [
     {
@@ -67,6 +72,27 @@ const Index = () => {
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
 
+=======
+  const sliderImages = [
+    {
+      url: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=800&h=600&fit=crop",
+      alt: "ব্যবসায়িক বিশ্লেষণ"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=800&h=600&fit=crop",
+      alt: "প্রকল্প ব্যবস্থাপনা"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&h=600&fit=crop",
+      alt: "কৌশলগত পরিকল্পনা"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1500673922987-e212871fec22?w=800&h=600&fit=crop",
+      alt: "সমাধান ডিজাইন"
+    }
+  ];
+
+>>>>>>> 176ec199e199e45cfeac013114b86cf8fda28517
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50">
       {/* Navigation */}
@@ -84,6 +110,7 @@ const Index = () => {
         </div>
       </nav>
 
+<<<<<<< HEAD
       {/* Hero Section - Image Slider */}
       <section className="pt-24 pb-16 px-0 relative">
         <div className="relative w-full rounded-none overflow-hidden shadow-lg">
@@ -105,6 +132,55 @@ const Index = () => {
               <Button variant="outline" size="lg" className="px-8 py-3 border-emerald-100 text-emerald-100 hover:bg-emerald-900">
                 যোগাযোগ করুন
               </Button>
+=======
+      {/* Hero Section with Image Slider */}
+      <section className="pt-24 pb-16 px-6">
+        <div className="container mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left side - Text Content */}
+            <div className="text-center lg:text-left">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 animate-fade-in">
+                রিকোয়ারমেন্ট অ্যানালিস্ট
+                <span className="block text-emerald-700">ও ব্যবসায়িক কৌশলবিদ</span>
+              </h1>
+              <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed animate-fade-in">
+                জটিল ব্যবসায়িক প্রয়োজনীয়তাকে স্পষ্ট, কার্যকর রিকোয়ারমেন্টে রূপান্তর করি। 
+                আমি স্টেকহোল্ডার এবং ডেভেলপমেন্ট টিমের মধ্যে সেতুবন্ধন হিসেবে কাজ করে সফল প্রকল্প সরবরাহ করি।
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in">
+                <Button size="lg" className="bg-emerald-700 hover:bg-emerald-800 text-white px-8 py-3">
+                  আমার কাজ দেখুন <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+                <Button variant="outline" size="lg" className="px-8 py-3 border-emerald-700 text-emerald-700 hover:bg-emerald-50">
+                  যোগাযোগ করুন
+                </Button>
+              </div>
+            </div>
+
+            {/* Right side - Image Slider */}
+            <div className="flex justify-center lg:justify-end">
+              <Carousel className="w-full max-w-md mx-auto">
+                <CarouselContent>
+                  {sliderImages.map((image, index) => (
+                    <CarouselItem key={index}>
+                      <div className="p-1">
+                        <Card className="border-0 shadow-2xl overflow-hidden">
+                          <CardContent className="p-0">
+                            <img 
+                              src={image.url} 
+                              alt={image.alt}
+                              className="w-full h-80 object-cover rounded-lg"
+                            />
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="left-2" />
+                <CarouselNext className="right-2" />
+              </Carousel>
+>>>>>>> 176ec199e199e45cfeac013114b86cf8fda28517
             </div>
           </div>
           {/* Slider Controls */}
